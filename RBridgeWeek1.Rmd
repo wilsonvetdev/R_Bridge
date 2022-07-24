@@ -1,0 +1,86 @@
+---
+title: "R Bridge Week 1 Assignment"
+author: "Wilson Ng"
+date: "2022-07-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1. Write a loop that calculates 12-factorial.
+
+```{r}
+
+n <- 12
+factorial <- 0
+
+while(n > 1) {
+  
+  if(factorial == 0) {
+    factorial <- n * (n - 1)
+    n <- n - 1
+  } else {
+    factorial <- factorial * (n - 1)
+    n <- n - 1
+  }
+  
+}
+
+print(factorial)
+
+```
+
+### 2. Show how to create a numeric vector that contains the sequence from 20 to 50 by 5.
+
+```{r}
+
+numeric_vector <- c(20)
+n <- 20
+
+while(n < 50) {
+  
+  n <- n + 5
+  numeric_vector <- append(numeric_vector, n)
+  
+}
+
+print(numeric_vector)
+
+```
+
+### 3. Create the function "quadratic" that takes a trio of input numbers a, b, and c and solve the quadratic equation. The function shoul print as output the two solutions.
+
+```{r}
+
+quadratic <- function(a, b, c) {
+  
+  discriminant <- (b^2) - (4*a*c)
+  
+  if(discriminant < 0) {
+    
+    return('Discriminant is negative.')
+    
+  } else if(discriminant > 0) {
+    
+    x_int_a <- (-b + sqrt(discriminant)) / (2*a)
+    x_int_b <- (-b - sqrt(discriminant)) / (2*a)
+
+    return(c(round(x_int_a, 2), round(x_int_b, 2)))
+    
+  } else {
+    
+    #discriminant = 0
+    x_int <- (-b) / (2*a)
+    
+    print('This quadratic equation only has one root since the discriminant is 0.')
+    return(x_int)
+    
+  }
+
+}
+
+quadratic(5, 6, 1)
+
+```
